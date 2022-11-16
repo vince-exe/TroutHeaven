@@ -1,0 +1,10 @@
+{
+    "emailLen": 45,
+    "passwordLen": 30,
+    "nicknameLen": 15,
+    "domainsArray": [
+        "@gmail.com",
+        "@virgilio.it",
+        "@outlook.com"
+    ]
+}
