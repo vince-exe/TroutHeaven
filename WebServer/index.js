@@ -12,6 +12,7 @@ app.use(express.static('public'))
 
 /* my routers */
 app.use('/registration', require('./routers/registrationRouter'))
+app.use('/login', require('./routers/loginRouter'))
 
 app.get(['/', '/homepage(.html)?'], (req, resp) => {
     resp.redirect(`${serverConfigs.fullUrl}/views/homepage.html`)

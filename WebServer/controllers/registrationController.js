@@ -9,6 +9,10 @@ exports.handleRegistration = async (req, resp) => {
     if ((!req.body.email || !req.body.password || !req.body.nickname) || !utilities.Utils.checkEmail(req.body.email, applicationConfigs.domainsArray)) {
         return resp.sendStatus(422)
     }
+    if (req.body.email.length > applicationConfigs.emailLen || req.body.password.length > applicationConfigs.passwordLen || req.body.nickname.length > applicationConfigs.nicknameLen) {
+        return resp.sendStatus(422)
+    }
+    
     /* check the email and the nickname */
     if ((await userSchema.find({ email: req.body.email })).length != 0) {
         return resp.sendStatus(409)
