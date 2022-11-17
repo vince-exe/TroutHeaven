@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Marhey&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #13475c;
+}
+
+.second-div {
+    width: 45%;
+}
+
+.main-nav-bar.active {
+    flex-direction: column;
+    height: 475px;
+}
+
+@media (max-width: 1206px) {
+    .second-div {
+        width: 55%;
+    }
+}
