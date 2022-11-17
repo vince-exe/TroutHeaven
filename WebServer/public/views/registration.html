@@ -22,11 +22,22 @@
         </div>
         <div class="second-div">
             <ul class="nav-list-headers">
-                <li class="nav-single-header"><a href="./homepage.html">Home</a></li>
-                <li class="nav-single-header"><a href="#">Download</a></li>
+                <li class="nav-single-header"><a href="./welcome.html">Home</a></li>
                 <li class="nav-single-header"><a href="#"">Login</a></li>
             </ul>
         </div>
     </nav>
+    <div class="registration_box">
+        <h2 id="title_registration_box">REGISTRATION</h2>
+        <input type="text" id="email_input" placeholder="email@gmail.com" maxlength="45" class="text-box">
+        <input type="password" id="pwd_input" placeholder="**********" maxlength="30" class="text-box">
+        <input type="text" id="nickname_input" placeholder="nickname" maxlength="15" class="text-box">
+        <button id="register_btn">Register</button>
+    </div>
+    <div id="error_text_div">
+        <h6 id="error_text"></h6>
+    </div>
+    <script src="../js/nav-bar.js"></script>
+    <script src="../js/registration.js"></script>
 </body>
 </html>

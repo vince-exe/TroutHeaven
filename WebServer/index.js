@@ -14,8 +14,8 @@ app.use(express.static('public'))
 app.use('/registration', require('./routers/registrationRouter'))
 app.use('/login', require('./routers/loginRouter'))
 
-app.get(['/', '/homepage(.html)?'], (req, resp) => {
-    resp.redirect(`${serverConfigs.fullUrl}/views/homepage.html`)
+app.get(['/', '/welcome(.html)?'], (req, resp) => {
+    resp.redirect(`${serverConfigs.fullUrl}/views/welcome.html`)
 })
 
 app.get('/*', (req, resp) => {
