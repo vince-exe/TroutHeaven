@@ -25,5 +25,6 @@ exports.handleLogin = async (req, resp) => {
         return resp.sendStatus(401)
     }
 
+    req.session.isAuth = true
     resp.sendStatus(200)
 }
