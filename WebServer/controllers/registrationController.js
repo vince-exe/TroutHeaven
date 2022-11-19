@@ -1,6 +1,8 @@
 /* Database schema ( users ) */
 const userSchema = require('../schema/userSchema')
 
+const bcrypt = require('bcrypt')
+
 const applicationConfigs = require('../configs/application.json')
 
 const utilities = require('../utils/utilities')
@@ -24,7 +26,7 @@ exports.handleRegistration = async (req, resp) => {
     try {
         await userSchema.create({
             email: req.body.email,
-            password: req.body.password,
+            password: await bcrypt.hash(req.body.password, applicationConfigs.saltPassword),
             nickname: req.body.nickname
         })
         return resp.sendStatus(200)

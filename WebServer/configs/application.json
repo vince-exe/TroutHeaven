@@ -6,5 +6,6 @@
         "@gmail.com",
         "@virgilio.it",
         "@outlook.com"
-    ]
+    ],
+    "saltPassword": 12
 }

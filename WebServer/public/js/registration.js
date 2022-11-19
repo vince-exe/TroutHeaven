@@ -52,7 +52,7 @@ registrationBtn.addEventListener('click', () => {
                 break
 
             case 200:
-                window.location.href = '../views/homepage.html'
+                window.location.href = '../views/login.html'
                 break
         }
     })
