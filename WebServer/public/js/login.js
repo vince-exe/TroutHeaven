@@ -44,7 +44,7 @@ loginBtn.addEventListener('click', () => {
                 break
 
             case 200:
-                window.location.href = '../views/homepage.html'
+                window.location.href = 'http://localhost:3000/views/homepage.html'
                 break
         }
     })

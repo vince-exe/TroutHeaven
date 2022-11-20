@@ -31,6 +31,9 @@ app.use(express.static('public'))
 app.use('/registration', require('./routers/registrationRouter'))
 app.use('/login', require('./routers/loginRouter'))
 
+/* routers ( AUTH required ) */
+app.use('/homepage', require('./routers/homepageRouter'))
+
 app.get(['/', '/welcome(.html)?'], (req, resp) => {
     resp.redirect(`${serverConfigs.fullUrl}/views/welcome.html`)
 })
@@ -38,12 +41,6 @@ app.get(['/', '/welcome(.html)?'], (req, resp) => {
 app.get('/*', (req, resp) => {
     resp.redirect(`${serverConfigs.fullUrl}/views/404.html`)
 })
-
-/* middleware for authentication */
-app.use(require('./middlewares/AUTH'))
-
-/* routers ( AUTH required ) */
-app.use('/homepage', require('./routers/homepageRouter'))
 
 /* try to connect to the database */
 mongoose.connect(serverConfigs.databaseUrl)

@@ -1,12 +1,9 @@
-const serverConfigs = require('../configs/server.json')
-
 const isAUTH = (req, resp, next) => {
     if(req.session.isAuth) {
-        next();
+        return next();
     }
 
-    /* redirect to the login page */
-    resp.status(401).redirect(`${serverConfigs.fullUrl}/views/login.html`)
+    return resp.sendStatus(401)
 }
 
-module.exports = isAUTH
+module.exports = { isAUTH }
