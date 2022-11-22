@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LoginWindow</class>
+ <widget class="QDialog" name="LoginWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>466</width>
+    <height>491</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Trout Heaven</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+	background-color: #13475c;
+}</string>
+  </property>
+  <widget class="QLabel" name="titleLabel">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>30</y>
+     <width>331</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    color: #dbdbdbe5;
+    word-spacing: 10px;
+    letter-spacing: 1px;
+}</string>
+   </property>
+   <property name="text">
+    <string>Trout Heaven</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>75</y>
+     <width>296</width>
+     <height>5</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+	background-color: rgb(9, 43, 56);
+	border-radius: 20px
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>120</y>
+     <width>371</width>
+     <height>351</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+	background-color: rgb(11, 55, 73);
+	border-radius: 20px;
+	border: 4px solid rgb(9, 43, 56);
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="emailBox">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>160</y>
+     <width>271</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+    border: 4px solid rgb(9, 43, 56);
+    background-color: #13475c;
+    color: #dbdbdbe5;
+    font-size: 19px;
+    outline: none;
+    letter-spacing: 1.3px;
+    border-radius: 10px;
+}
+
+QLineEdit:hover {
+	border: 5px solid #092b38;
+ }</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="placeholderText">
+    <string>email@gmail.com</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="passwordBox">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>260</y>
+     <width>271</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+    border: 4px solid rgb(9, 43, 56);
+    background-color: #13475c;
+    color: #dbdbdbe5;
+    font-size: 19px;
+    outline: none;
+    letter-spacing: 1.3px;
+    border-radius: 10px;
+}
+
+QLineEdit:hover {
+	border: 5px solid #092b38;
+ }</string>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="placeholderText">
+    <string>* * * * * * * * * * *</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="loginButton">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>350</y>
+     <width>150</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    border: 4px solid #092b38;
+    background-color: #13475c;
+    color: #dbdbdbe5;
+    font-size: 20px;
+    outline: none;
+    letter-spacing: 1.3px;
+    border-radius: 10px;
+}
+
+QPushButton:hover {
+	border: 5px solid #092b38;
+}</string>
+   </property>
+   <property name="text">
+    <string>Login</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>430</y>
+     <width>171</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    color: #dbdbdbe5;
+    letter-spacing: 0.8px;
+}</string>
+   </property>
+   <property name="text">
+    <string>non hai un account?</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="linkButton">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>430</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    color:rgb(27, 113, 152);
+    letter-spacing: 0.8px;
+	outline: none;
+	background-color: rgb(11, 55, 73);
+	border: none;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>registrati ora</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
