@@ -1,9 +1,19 @@
 #include "login_window.h"
 #include "ui_login_window.h"
 
+#include "application_utilities.h"
+
 #include <QDebug>
 #include <QUrl>
 #include <QDesktopServices>
+#include <QCoreApplication>
+#include <QtNetwork/QNetworkAccessManager>
+#include <QtNetwork/QNetworkRequest>
+#include <QtNetwork/QNetworkReply>
+#include <QJsonObject>
+#include <QJsonDocument>
+#include <QMessageBox>
+#include <QKeyEvent>
 
 LoginWindow::LoginWindow(QWidget *parent)
     : QDialog(parent)
@@ -24,7 +34,54 @@ LoginWindow::~LoginWindow() {
     delete ui;
 }
 
-void LoginWindow::on_linkButton_clicked() {
-    QDesktopServices::openUrl(QUrl("http://localhost:3000/views/registration.html", QUrl::TolerantMode));
+void LoginWindow::keyPressEvent(QKeyEvent *event) {
+    /* check if the user pressed ENTER */
+    if((event->key() == Qt::Key_Enter) || (event->key() == Qt::Key_Return)) {
+        this->on_loginButton_clicked();
+    }
 }
 
+void LoginWindow::loginFinished(QNetworkReply *rep) {
+    /* check the error */
+    if(!(rep->error() == QNetworkReply::NoError)) {
+        QString strRep = (QString) rep->readAll();
+        if(strRep == LoginErrors::Unauthorized) {
+            QMessageBox::warning(0, "Warning", "Email or password wrong.");
+            return;
+        }
+        if(strRep == LoginErrors::UnprocessableEntity) {
+            QMessageBox::warning(0, "Warning", "Invalid email or password");
+            return;
+        }
+        else {
+            QMessageBox::critical(0, "Fatal Error", strRep);
+            return;
+        }
+    }
+    QMessageBox::information(0, "Success", "Successfully logged in");
+}
+
+void LoginWindow::on_linkButton_clicked() {
+    QDesktopServices::openUrl(QUrl(ApplicationUtilities::registrationPageUrl, QUrl::TolerantMode));
+}
+
+void LoginWindow::on_loginButton_clicked() {
+    QNetworkAccessManager* manager = new QNetworkAccessManager(this);
+
+    connect(manager,SIGNAL(finished(QNetworkReply*)),this,SLOT(loginFinished(QNetworkReply*)));
+    connect(manager,SIGNAL(finished(QNetworkReply*)),manager,SLOT(deleteLater()));
+
+    QUrl url(ApplicationUtilities::loginAPiUrl);
+    QNetworkRequest request(url);
+
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+    QJsonObject obj;
+    obj["email"] = ui->emailBox->text();
+    obj["password"] = ui->passwordBox->text();
+
+    QJsonDocument doc(obj);
+    QByteArray data = doc.toJson();
+
+    manager->post(request, data);
+}
