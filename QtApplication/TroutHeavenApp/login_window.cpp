@@ -15,11 +15,15 @@
 #include <QMessageBox>
 #include <QKeyEvent>
 
+/* form */
+#include "home_page_dialog.h"
+
 LoginWindow::LoginWindow(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::LoginWindow) {
     ui->setupUi(this);
 
+    this->setWindowIcon(QIcon("resources/icons/iconApp.png"));
     this->setWindowFlags(Qt::Window | Qt::MSWindowsFixedSizeDialogHint);
 
     ui->titleLabel->setFont(QFont("resources/fonts/Marhey-Bold.ttf", 29, 40));
@@ -58,7 +62,12 @@ void LoginWindow::loginFinished(QNetworkReply *rep) {
             return;
         }
     }
-    QMessageBox::information(0, "Success", "Successfully logged in");
+    this->hide();
+
+    /* open the homepage dialog */
+    HomePageDialog homePageDialog;
+    homePageDialog.show();
+    homePageDialog.exec();
 }
 
 void LoginWindow::on_linkButton_clicked() {

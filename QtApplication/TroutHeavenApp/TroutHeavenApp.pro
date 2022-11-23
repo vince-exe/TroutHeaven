@@ -11,14 +11,17 @@ CONFIG += c++17
 
 SOURCES += \
     application_utilities.cpp \
+    home_page_dialog.cpp \
     main.cpp \
     login_window.cpp
 
 HEADERS += \
     application_utilities.h \
+    home_page_dialog.h \
     login_window.h
 
 FORMS += \
+    home_page_dialog.ui \
     login_window.ui
 
 # Default rules for deployment.
