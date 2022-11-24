@@ -13,16 +13,19 @@ SOURCES += \
     application_utilities.cpp \
     home_page_dialog.cpp \
     main.cpp \
-    login_window.cpp
+    login_window.cpp \
+    score_board_dialog.cpp
 
 HEADERS += \
     application_utilities.h \
     home_page_dialog.h \
-    login_window.h
+    login_window.h \
+    score_board_dialog.h
 
 FORMS += \
     home_page_dialog.ui \
-    login_window.ui
+    login_window.ui \
+    score_board_dialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

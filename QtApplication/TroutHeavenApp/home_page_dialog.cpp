@@ -19,6 +19,9 @@ QString HomePageDialog::password;
 #include <QJsonDocument>
 #include <QMessageBox>
 
+/* forms */
+#include "score_board_dialog.h"
+
 HomePageDialog::HomePageDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::HomePageDialog) {
@@ -54,11 +57,13 @@ void HomePageDialog::getNicknameReqFinished(QNetworkReply *rep) {
             QMessageBox::critical(0, "Fatal Error", "The application failed to load the resources\n[ ERROR MESSAGE ]: " + strRep);
             return; this->close();
         }
+
+        return; this->close();
     }
     QJsonDocument jDoc = QJsonDocument::fromJson(rep->readAll());
     QJsonObject jObj = jDoc.object();
 
-        /* set the nickname */
+    /* set the nickname */
     ui->myNickLabel->setText("You: " + jObj["nickname"].toString());
 }
 
@@ -95,3 +100,12 @@ void HomePageDialog::on_stopButton_clicked() {
     ui->statusColor->setStyleSheet("background-color: rgb(186, 0, 0);");
     this->isFishing = false;
 }
+
+void HomePageDialog::on_scoreBoardButton_clicked() {
+    ScoreBoardDialog scoreBoardDialog;
+
+    scoreBoardDialog.setModal(true);
+    scoreBoardDialog.show();
+    scoreBoardDialog.exec();
+}
+

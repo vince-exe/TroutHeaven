@@ -12,6 +12,8 @@ public:
 
     static const QString getNicknameApiUrl;
 
+    static const QString getPlayersList;
+
 public:
     ApplicationUtilities();
 

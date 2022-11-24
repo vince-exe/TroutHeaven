@@ -62,12 +62,11 @@ void LoginWindow::loginFinished(QNetworkReply *rep) {
             return;
         }
     }
-    this->hide();
-
     /* open the homepage dialog */
     HomePageDialog::email = ui->emailBox->text();
 
     HomePageDialog homePageDialog;
+    homePageDialog.setModal(true);
     homePageDialog.show();
     homePageDialog.exec();
 }

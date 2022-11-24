@@ -32,6 +32,8 @@ private slots:
 
     void getNicknameReqFinished(QNetworkReply *rep);
 
+    void on_scoreBoardButton_clicked();
+
 private:
     Ui::HomePageDialog *ui;
 };

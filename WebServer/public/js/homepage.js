@@ -21,11 +21,6 @@ const addPlayer = (nickname, score, money) => {
 /* request to get the players list */
 fetch('http://localhost:3000/homepage/api/v1/get-players')
 .then(response => {
-    
-    if(response.status == 401) {
-        return window.location.replace('http://localhost:3000/views/login.html')
-    }
-
     response.text().then(value => {
         let playerArray = JSON.parse(value).playersList
         
