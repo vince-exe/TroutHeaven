@@ -6,4 +6,6 @@ const QString ApplicationUtilities::loginAPiUrl = "http://localhost:3000/login/a
 
 const QString ApplicationUtilities::registrationPageUrl = "http://localhost:3000/views/registration.html";
 
+const QString ApplicationUtilities::getNicknameApiUrl = "http://localhost:3000/homepage/api/v1/get-nickname";
+
 ApplicationUtilities::ApplicationUtilities() {};

@@ -2,6 +2,7 @@
 #define HOME_PAGE_DIALOG_H
 
 #include <QDialog>
+#include <QtNetwork/QNetworkReply>
 
 namespace Ui {
 class HomePageDialog;
@@ -16,12 +17,20 @@ public:
 
     static bool isFishing;
 
+    static QString email;
+
+    static QString password;
+
     ~HomePageDialog();
+
+    void getNicknameFromServer();
 
 private slots:
     void on_startButton_clicked();
 
     void on_stopButton_clicked();
+
+    void getNicknameReqFinished(QNetworkReply *rep);
 
 private:
     Ui::HomePageDialog *ui;

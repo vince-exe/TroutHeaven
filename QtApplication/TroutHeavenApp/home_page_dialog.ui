@@ -249,6 +249,30 @@ QPushButton:hover {
     <string/>
    </property>
   </widget>
+  <widget class="QLabel" name="myNickLabel">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>450</y>
+     <width>311</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    color: #dbdbdbe5;
+    word-spacing: 10px;
+    letter-spacing: 1px;
+	padding-left: 15px;
+}</string>
+   </property>
+   <property name="text">
+    <string>You: </string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

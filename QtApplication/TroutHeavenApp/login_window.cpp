@@ -58,13 +58,15 @@ void LoginWindow::loginFinished(QNetworkReply *rep) {
             return;
         }
         else {
-            QMessageBox::critical(0, "Fatal Error", strRep);
+            QMessageBox::critical(0, "Error", "Fatal Error");
             return;
         }
     }
     this->hide();
 
     /* open the homepage dialog */
+    HomePageDialog::email = ui->emailBox->text();
+
     HomePageDialog homePageDialog;
     homePageDialog.show();
     homePageDialog.exec();

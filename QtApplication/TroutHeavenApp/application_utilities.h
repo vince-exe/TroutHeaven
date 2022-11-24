@@ -10,6 +10,8 @@ public:
 
     static const QString registrationPageUrl;
 
+    static const QString getNicknameApiUrl;
+
 public:
     ApplicationUtilities();
 
