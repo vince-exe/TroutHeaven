@@ -3,6 +3,9 @@
 
 #include <QDialog>
 #include <QtNetwork/QNetworkReply>
+#include <QStandardItem>
+
+QStandardItem* getItem(QString string);
 
 namespace Ui {
 class ScoreBoardDialog;

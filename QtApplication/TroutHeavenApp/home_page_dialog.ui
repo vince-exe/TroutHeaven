@@ -252,8 +252,8 @@ QPushButton:hover {
   <widget class="QLabel" name="myNickLabel">
    <property name="geometry">
     <rect>
-     <x>380</x>
-     <y>450</y>
+     <x>370</x>
+     <y>440</y>
      <width>311</width>
      <height>41</height>
     </rect>
