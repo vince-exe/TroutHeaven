@@ -4,6 +4,11 @@
 #include <QString>
 #include <unordered_map>
 
+#include <unordered_map>
+#include <string>
+
+#include "fish.h"
+
 class ApplicationUtilities {
 public:
     static const QString loginAPiUrl;
@@ -13,6 +18,8 @@ public:
     static const QString getNicknameApiUrl;
 
     static const QString getPlayersList;
+
+    static const std::unordered_map<std::string, Fish> fishMap;
 
 public:
     ApplicationUtilities();

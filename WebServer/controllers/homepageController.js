@@ -25,3 +25,7 @@ exports.getNickname = async (req, resp) => {
 
     resp.status(200).json({nickname: user.nickname})
 }
+
+exports.getFish = (req, resp) => {
+    resp.json({fishList: require('../configs/fish.json').FishList})
+}

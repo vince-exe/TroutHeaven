@@ -104,7 +104,15 @@ QPushButton:hover {
 	border: 6px solid #092b38;
 	padding-top: 10px;
 	padding-left: 10px;
+	color: #dbdbdbe5;
+	font-size: 15px;
 }</string>
+   </property>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOff</enum>
    </property>
    <property name="readOnly">
     <bool>true</bool>

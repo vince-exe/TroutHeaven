@@ -25,6 +25,8 @@ public:
 
     void getNicknameFromServer();
 
+    void printHistoryText(const QString& string);
+
 private slots:
     void on_startButton_clicked();
 

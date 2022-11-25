@@ -87,11 +87,20 @@ void HomePageDialog::getNicknameFromServer() {
     manager->post(request, data);
 }
 
+void HomePageDialog::printHistoryText(const QString &string) {
+    /* display the content to the QPlainTextEdit */
+    QTextCursor textCursor = QTextCursor(ui->historyTextEdit->document());
+    textCursor.movePosition(QTextCursor::End);
+    textCursor.insertText(string);
+}
+
 void HomePageDialog::on_startButton_clicked() {
     if(this->isFishing) { return; }
 
     ui->statusColor->setStyleSheet("background-color: rgb(0, 100, 0);");
     this->isFishing = true;
+
+    this->printHistoryText("[ BOT ]: Ready to catch some fish\n");
 }
 
 void HomePageDialog::on_stopButton_clicked() {
@@ -99,6 +108,8 @@ void HomePageDialog::on_stopButton_clicked() {
 
     ui->statusColor->setStyleSheet("background-color: rgb(186, 0, 0);");
     this->isFishing = false;
+
+    this->printHistoryText("[ BOT ]: Nice catch bye!\n");
 }
 
 void HomePageDialog::on_scoreBoardButton_clicked() {
