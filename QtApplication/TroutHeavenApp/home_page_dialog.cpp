@@ -22,6 +22,7 @@ QString HomePageDialog::password;
 #include <QJsonDocument>
 #include <QMessageBox>
 #include <QJsonArray>
+#include <chrono>
 
 /* forms */
 #include "score_board_dialog.h"
@@ -35,12 +36,11 @@ HomePageDialog::HomePageDialog(QWidget *parent) :
     this->setWindowFlags(Qt::Window | Qt::MSWindowsFixedSizeDialogHint);
 
     ui->titleLabel->setFont(QFont("resources/fonts/Marhey-Bold.ttf", 30, 40));
-    ui->statusLabel->setFont(QFont("resources/fonts/Marhey-Bold.ttf", 24, 40));
     ui->startButton->setFont(QFont("resources/fonts/Marhey-Bold.ttf", 15, 40));
     ui->stopButton->setFont(QFont("resources/fonts/Marhey-Bold.ttf", 15, 40));
     ui->scoreBoardButton->setFont(QFont("resources/fonts/Marhey-Bold.ttf", 15, 40));
     ui->optionsButton->setFont(QFont("resources/fonts/Marhey-Bold.ttf", 15, 40));
-    ui->myNickLabel->setFont(QFont("resources/fonts/Marhey-Bold.ttf", 18, 40));
+    ui->myNickLabel->setFont(QFont("resources/fonts/Marhey-Bold.ttf", 14, 40));
 
     this->isFishing = false;
     this->canFish = false;
@@ -132,6 +132,15 @@ void HomePageDialog::printHistoryText(const QString &string) {
     textCursor.insertText(string);
 }
 
+void fishFunc(HomePageDialog* this_) {
+    using namespace std::chrono_literals;
+
+    while(this_->isFishing) {
+        qDebug() << "pescando..\n";
+        std::this_thread::sleep_for(2s);
+    }
+}
+
 void HomePageDialog::on_startButton_clicked() {
     if(this->isFishing || !this->canFish) { return; }
 
@@ -139,6 +148,9 @@ void HomePageDialog::on_startButton_clicked() {
     this->isFishing = true;
 
     this->printHistoryText("[ BOT ]: Ready to catch some fish\n");
+
+    /* start the thread */
+    this->fishThread = new std::thread(fishFunc, this);
 }
 
 void HomePageDialog::on_stopButton_clicked() {
@@ -148,6 +160,10 @@ void HomePageDialog::on_stopButton_clicked() {
     this->isFishing = false;
 
     this->printHistoryText("[ BOT ]: Nice catch bye!\n");
+
+    if(this->fishThread->joinable()) {
+        this->fishThread->join();
+    }
 }
 
 void HomePageDialog::on_scoreBoardButton_clicked() {

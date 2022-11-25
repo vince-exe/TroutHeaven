@@ -4,6 +4,8 @@
 #include <QDialog>
 #include <QtNetwork/QNetworkReply>
 
+#include <thread>
+
 namespace Ui {
 class HomePageDialog;
 }
@@ -44,6 +46,10 @@ private slots:
 
 private:
     Ui::HomePageDialog *ui;
+
+    std::thread* fishThread;
 };
+
+void fishFunc(HomePageDialog*);
 
 #endif // HOME_PAGE_DIALOG_H
