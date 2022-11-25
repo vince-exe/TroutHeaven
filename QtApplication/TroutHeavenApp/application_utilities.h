@@ -2,9 +2,8 @@
 #define APPLICATIONUTILITIES_H
 
 #include <QString>
-#include <unordered_map>
+#include <QMap>
 
-#include <unordered_map>
 #include <string>
 
 #include "fish.h"
@@ -19,7 +18,9 @@ public:
 
     static const QString getPlayersList;
 
-    static const std::unordered_map<std::string, Fish> fishMap;
+    static const QString getFishApiUrl;
+
+    static QMap<QString, Fish> fishMap;
 
 public:
     ApplicationUtilities();

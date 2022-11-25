@@ -3,11 +3,14 @@
 
 bool HomePageDialog::isFishing = false;
 
+bool HomePageDialog::canFish = false;
+
 QString HomePageDialog::email;
 
 QString HomePageDialog::password;
 
 #include "application_utilities.h"
+#include "fish.h"
 
 #include <QUrl>
 #include <QDesktopServices>
@@ -18,6 +21,7 @@ QString HomePageDialog::password;
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QMessageBox>
+#include <QJsonArray>
 
 /* forms */
 #include "score_board_dialog.h"
@@ -39,9 +43,12 @@ HomePageDialog::HomePageDialog(QWidget *parent) :
     ui->myNickLabel->setFont(QFont("resources/fonts/Marhey-Bold.ttf", 18, 40));
 
     this->isFishing = false;
+    this->canFish = false;
+
     ui->statusColor->setStyleSheet("background-color: rgb(186, 0, 0);");
 
-    getNicknameFromServer();
+    this->getNicknameFromServer();
+    this->getFishFromServer();
 }
 
 HomePageDialog::~HomePageDialog() {
@@ -57,14 +64,35 @@ void HomePageDialog::getNicknameReqFinished(QNetworkReply *rep) {
             QMessageBox::critical(0, "Fatal Error", "The application failed to load the resources\n[ ERROR MESSAGE ]: " + strRep);
             return; this->close();
         }
-
+        qDebug() << strRep;
+        QMessageBox::critical(0, "Fatal Error", "The application failed the request of the nickname");
         return; this->close();
     }
+
     QJsonDocument jDoc = QJsonDocument::fromJson(rep->readAll());
     QJsonObject jObj = jDoc.object();
 
     /* set the nickname */
     ui->myNickLabel->setText("You: " + jObj["nickname"].toString());
+}
+
+void HomePageDialog::getFishFromServerFinished(QNetworkReply *rep) {
+    /* check the error */
+    if(!(rep->error() == QNetworkReply::NoError)) {
+        QString strRep = (QString) rep->readAll();
+        QMessageBox::critical(0, "Fatal Error", "The application failed the request to the server");
+        return; this->close();
+    }
+
+    QJsonDocument jDoc = QJsonDocument::fromJson(rep->readAll());
+    QJsonArray arr = jDoc.object()["fishList"].toArray();
+
+    /* save each fish in the fish map ( key = fish name ) */
+    for(auto i : arr) {
+        QJsonObject j = i.toObject();
+        ApplicationUtilities::fishMap.insert(j["name"].toString(), Fish(j["name"].toString(), j["value"].toDouble(), j["score"].toDouble()));
+    }
+    this->canFish = true;
 }
 
 void HomePageDialog::getNicknameFromServer() {
@@ -82,9 +110,19 @@ void HomePageDialog::getNicknameFromServer() {
     obj["email"] = HomePageDialog::email;
 
     QJsonDocument doc(obj);
-    QByteArray data = doc.toJson();
+    manager->post(request, doc.toJson());
+}
 
-    manager->post(request, data);
+void HomePageDialog::getFishFromServer() {
+    QNetworkAccessManager* manager = new QNetworkAccessManager(this);
+
+    connect(manager,SIGNAL(finished(QNetworkReply*)),this,SLOT(getFishFromServerFinished(QNetworkReply*)));
+    connect(manager,SIGNAL(finished(QNetworkReply*)),manager,SLOT(deleteLater()));
+
+    QUrl url(ApplicationUtilities::getFishApiUrl);
+    QNetworkRequest request(url);
+
+    manager->get(request);
 }
 
 void HomePageDialog::printHistoryText(const QString &string) {
@@ -95,7 +133,7 @@ void HomePageDialog::printHistoryText(const QString &string) {
 }
 
 void HomePageDialog::on_startButton_clicked() {
-    if(this->isFishing) { return; }
+    if(this->isFishing || !this->canFish) { return; }
 
     ui->statusColor->setStyleSheet("background-color: rgb(0, 100, 0);");
     this->isFishing = true;

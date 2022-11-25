@@ -1,22 +1,22 @@
 #ifndef FISH_H
 #define FISH_H
 
-#include <string>
+#include <QString>
 
 class Fish {
 private:
-    std::string name;
+    QString name;
 
     double value;
 
     double score;
 
 public:
-    Fish(const std::string& name, double value, double score);
+    Fish(const QString name, double value, double score);
 
     Fish();
 
-    std::string getName();
+    QString getName();
 
     double getValue();
 

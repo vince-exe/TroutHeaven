@@ -8,6 +8,8 @@ const QString ApplicationUtilities::getNicknameApiUrl = "http://localhost:3000/h
 
 const QString ApplicationUtilities::getPlayersList = "http://localhost:3000/homepage/api/v1/get-players";
 
-const std::unordered_map<std::string, Fish> ApplicationUtilities::fishMap;
+const QString ApplicationUtilities::getFishApiUrl = "http://localhost:3000/homepage/api/v1/get-fish";
+
+QMap<QString, Fish> ApplicationUtilities::fishMap;
 
 ApplicationUtilities::ApplicationUtilities() {};

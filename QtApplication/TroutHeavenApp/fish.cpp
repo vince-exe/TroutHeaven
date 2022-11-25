@@ -1,6 +1,6 @@
 #include "fish.h"
 
-Fish::Fish(const std::string &name, double value, double score) {
+Fish::Fish(const QString name, double value, double score) {
     this->name = name;
     this->value = value;
     this->score = score;
@@ -8,7 +8,7 @@ Fish::Fish(const std::string &name, double value, double score) {
 
 Fish::Fish() {}
 
-std::string Fish::getName() {
+QString Fish::getName() {
     return this->name;
 }
 

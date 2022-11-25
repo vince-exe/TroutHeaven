@@ -17,6 +17,8 @@ public:
 
     static bool isFishing;
 
+    static bool canFish;
+
     static QString email;
 
     static QString password;
@@ -24,6 +26,8 @@ public:
     ~HomePageDialog();
 
     void getNicknameFromServer();
+
+    void getFishFromServer();
 
     void printHistoryText(const QString& string);
 
@@ -33,6 +37,8 @@ private slots:
     void on_stopButton_clicked();
 
     void getNicknameReqFinished(QNetworkReply *rep);
+
+    void getFishFromServerFinished(QNetworkReply *rep);
 
     void on_scoreBoardButton_clicked();
 

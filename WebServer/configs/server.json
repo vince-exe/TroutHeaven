@@ -3,5 +3,5 @@
     "hostname": "localhost",
     "fullUrl": "http://localhost:3000",
     "databasePort": 27017,
-    "databaseUrl": "mongodb://127.0.0.1:27017/TroutHeaven"
+    "databaseUrl": "mongodb://localhost:27017/TroutHeaven"
 }
