@@ -29,11 +29,15 @@ public:
 
     static QString password;
 
+    static TrackActivity trackActivity;
+
     ~HomePageDialog();
 
     void getNicknameFromServer();
 
     void getFishFromServer();
+
+    void updatePlayerStats();
 
     void printHistoryText(const QString& string);
 
@@ -45,6 +49,8 @@ private slots:
     void getNicknameReqFinished(QNetworkReply *rep);
 
     void getFishFromServerFinished(QNetworkReply *rep);
+
+    void updatePlayerStatsFinished(QNetworkReply *rep);
 
     void on_scoreBoardButton_clicked();
 

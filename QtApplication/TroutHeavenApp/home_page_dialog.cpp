@@ -9,6 +9,8 @@ QString HomePageDialog::email;
 
 QString HomePageDialog::password;
 
+TrackActivity HomePageDialog::trackActivity;
+
 #include "application_utilities.h"
 #include "fish.h"
 
@@ -127,6 +129,46 @@ void HomePageDialog::getFishFromServer() {
     manager->get(request);
 }
 
+void HomePageDialog::updatePlayerStatsFinished(QNetworkReply *rep) {
+    /* check the error */
+    if(!(rep->error() == QNetworkReply::NoError)) {
+        QMessageBox::critical(0, "Fatal Error", "The application failed to update the user stats");
+        return; this->close();
+    }
+    this->isFishing = false;
+}
+
+void HomePageDialog::updatePlayerStats() {
+    QNetworkAccessManager* manager = new QNetworkAccessManager(this);
+
+    connect(manager,SIGNAL(finished(QNetworkReply*)),this,SLOT(updatePlayerStatsFinished(QNetworkReply*)));
+    connect(manager,SIGNAL(finished(QNetworkReply*)),manager,SLOT(deleteLater()));
+
+    QUrl url(ApplicationUtilities::updtPlayerStatsAPIUrl);
+    QNetworkRequest request(url);
+
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+    qDebug() << "Acciuga: " << this->trackActivity.countAcciuga;
+    qDebug() << "Anguilla: " << this->trackActivity.countAnguilla;
+    qDebug() << "Calamaro: " << this->trackActivity.countCalamro;
+    qDebug() << "Totano: " << this->trackActivity.countTotano;
+    qDebug() << "Tonnetto: " << this->trackActivity.countTonnetto;
+    qDebug() << "Trota: " << this->trackActivity.countTrota;
+
+    QJsonObject obj;
+    obj["email"] = this->email;
+    obj["cAcciuga"] = this->trackActivity.countAcciuga;
+    obj["cAnguilla"] = this->trackActivity.countAnguilla;
+    obj["cCalamaro"] = this->trackActivity.countCalamro;
+    obj["cTotano"] = this->trackActivity.countTotano;
+    obj["cTonnetto"] = this->trackActivity.countTonnetto;
+    obj["cTrota"] = this->trackActivity.countTrota;
+
+    QJsonDocument doc(obj);
+    manager->post(request, doc.toJson());
+}
+
 void HomePageDialog::printHistoryText(const QString &string) {
     /* display the content to the QPlainTextEdit */
     QTextCursor textCursor = QTextCursor(ui->historyTextEdit->document());
@@ -171,23 +213,16 @@ QString checkNumber(double n, TrackActivity* trackActivity) {
 
 void fishFunc(HomePageDialog* this_) {
     using namespace std::chrono_literals;
-    TrackActivity trackActivity {0, 0, 0, 0, 0, 0, };
+    HomePageDialog::trackActivity = {0, 0, 0, 0, 0, 0};
 
     while(this_->isFishing) {
         std::this_thread::sleep_for(2s);
 
-        QString keyFish = checkNumber(QRandomGenerator::global()->bounded(0, 100), &trackActivity);
         if(this_->isFishing) {
+            QString keyFish = checkNumber(QRandomGenerator::global()->bounded(0, 100), &HomePageDialog::trackActivity);
             this_->printHistoryText("[ BOT ]: Catch +1 of " + keyFish + "\n");
         }
     }
-
-    qDebug() << "Acciuga: " << trackActivity.countAcciuga;
-    qDebug() << "Anguilla: " << trackActivity.countAnguilla;
-    qDebug() << "Calamaro: " << trackActivity.countCalamro;
-    qDebug() << "Totano: " << trackActivity.countTotano;
-    qDebug() << "Tonnetto: " << trackActivity.countTonnetto;
-    qDebug() << "Trota: " << trackActivity.countTrota;
 }
 
 void HomePageDialog::on_startButton_clicked() {
@@ -205,16 +240,17 @@ void HomePageDialog::on_startButton_clicked() {
 
 void HomePageDialog::on_stopButton_clicked() {
     if(!this->isFishing) { return; }
-
-    ui->statusColor->setStyleSheet("background-color: rgb(186, 0, 0);");
     this->isFishing = false;
 
-    this->printHistoryText("[ BOT ]: Nice catch bye!\n");
+    ui->statusColor->setStyleSheet("background-color: rgb(186, 0, 0);");
+
+    this->printHistoryText("\n[ BOT ]: Nice catch bye!\n");
 
     if(this->fishThread->joinable()) {
         this->fishThread->join();
-        delete this->fishThread;
     }
+    /* send the fish to the server */
+    this->updatePlayerStats();
 }
 
 void HomePageDialog::on_scoreBoardButton_clicked() {

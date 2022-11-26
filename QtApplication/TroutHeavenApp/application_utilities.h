@@ -20,6 +20,8 @@ public:
 
     static const QString getFishApiUrl;
 
+    static const QString updtPlayerStatsAPIUrl;
+
     static QMap<QString, Fish> fishMap;
 
 public:
