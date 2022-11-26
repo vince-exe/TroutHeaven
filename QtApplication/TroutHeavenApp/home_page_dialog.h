@@ -6,6 +6,10 @@
 
 #include <thread>
 
+struct TrackActivity {
+    int countAcciuga, countAnguilla, countCalamro, countTotano, countTonnetto, countTrota;
+};
+
 namespace Ui {
 class HomePageDialog;
 }
@@ -44,6 +48,10 @@ private slots:
 
     void on_scoreBoardButton_clicked();
 
+    void on_storeBtn_clicked();
+
+    void on_storeBtn_2_clicked();
+
 private:
     Ui::HomePageDialog *ui;
 
@@ -51,5 +59,7 @@ private:
 };
 
 void fishFunc(HomePageDialog*);
+
+QString checkNumber(double n, TrackActivity* trackActivity);
 
 #endif // HOME_PAGE_DIALOG_H

@@ -22,6 +22,8 @@ QString HomePageDialog::password;
 #include <QJsonDocument>
 #include <QMessageBox>
 #include <QJsonArray>
+#include <QRandomGenerator>
+
 #include <chrono>
 
 /* forms */
@@ -132,13 +134,60 @@ void HomePageDialog::printHistoryText(const QString &string) {
     textCursor.insertText(string);
 }
 
+QString checkNumber(double n, TrackActivity* trackActivity) {
+    double j;
+
+    if(n >= 0 && n <= 50) {
+        j = QRandomGenerator::global()->bounded(0, 5);
+
+        if(j == 0 || j == 1) {
+            trackActivity->countAcciuga++;
+            return "acciuga";
+        }
+        else if(j == 2) {
+            trackActivity->countAnguilla++;
+            return "anguilla";
+        }
+        else {
+            trackActivity->countCalamro++;
+            return  "calamaro";
+        }
+    }
+    if(n <= 90) {
+        j = QRandomGenerator::global()->bounded(0, 4);
+
+        if(j == 0 || j == 1) {
+            trackActivity->countTotano++;
+            return "totano";
+        }
+        else {
+            trackActivity->countTonnetto++;
+            return "tonnetto";
+        }
+    }
+    trackActivity->countTrota++;
+    return "trota";
+}
+
 void fishFunc(HomePageDialog* this_) {
     using namespace std::chrono_literals;
+    TrackActivity trackActivity {0, 0, 0, 0, 0, 0, };
 
     while(this_->isFishing) {
-        qDebug() << "pescando..\n";
         std::this_thread::sleep_for(2s);
+
+        QString keyFish = checkNumber(QRandomGenerator::global()->bounded(0, 100), &trackActivity);
+        if(this_->isFishing) {
+            this_->printHistoryText("[ BOT ]: Catch +1 of " + keyFish + "\n");
+        }
     }
+
+    qDebug() << "Acciuga: " << trackActivity.countAcciuga;
+    qDebug() << "Anguilla: " << trackActivity.countAnguilla;
+    qDebug() << "Calamaro: " << trackActivity.countCalamro;
+    qDebug() << "Totano: " << trackActivity.countTotano;
+    qDebug() << "Tonnetto: " << trackActivity.countTonnetto;
+    qDebug() << "Trota: " << trackActivity.countTrota;
 }
 
 void HomePageDialog::on_startButton_clicked() {
@@ -147,7 +196,8 @@ void HomePageDialog::on_startButton_clicked() {
     ui->statusColor->setStyleSheet("background-color: rgb(0, 100, 0);");
     this->isFishing = true;
 
-    this->printHistoryText("[ BOT ]: Ready to catch some fish\n");
+    this->ui->historyTextEdit->clear();
+    this->printHistoryText("[ BOT ]: Ready to catch some fish\n\n");
 
     /* start the thread */
     this->fishThread = new std::thread(fishFunc, this);
@@ -163,14 +213,36 @@ void HomePageDialog::on_stopButton_clicked() {
 
     if(this->fishThread->joinable()) {
         this->fishThread->join();
+        delete this->fishThread;
     }
 }
 
 void HomePageDialog::on_scoreBoardButton_clicked() {
+    if(this->isFishing) {
+        QMessageBox::information(0, "Info Application", "You have to stop your fishing session");
+        return;
+    }
+
     ScoreBoardDialog scoreBoardDialog;
 
     scoreBoardDialog.setModal(true);
     scoreBoardDialog.show();
     scoreBoardDialog.exec();
+}
+
+
+void HomePageDialog::on_storeBtn_clicked() {
+    if(this->isFishing) {
+        QMessageBox::information(0, "Info Application", "You have to stop your fishing session");
+        return;
+    }
+}
+
+
+void HomePageDialog::on_storeBtn_2_clicked() {
+    if(this->isFishing) {
+        QMessageBox::information(0, "Info Application", "You have to stop your fishing session");
+        return;
+    }
 }
 

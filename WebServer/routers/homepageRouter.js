@@ -10,4 +10,6 @@ router.route('/api/v1/get-nickname').post(homepageController.getNickname)
 
 router.route('/api/v1/get-fish').get(homepageController.getFish)
 
+router.route('/api/v1/updt-player-stats').post(homepageController.updtPlayerStats)
+
 module.exports = router
