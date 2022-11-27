@@ -30,6 +30,7 @@ TrackActivity HomePageDialog::trackActivity;
 
 /* forms */
 #include "score_board_dialog.h"
+#include "stats_dialog.h"
 
 HomePageDialog::HomePageDialog(QWidget *parent) :
     QDialog(parent),
@@ -43,7 +44,7 @@ HomePageDialog::HomePageDialog(QWidget *parent) :
     ui->startButton->setFont(QFont("resources/fonts/Marhey-Bold.ttf", 15, 40));
     ui->stopButton->setFont(QFont("resources/fonts/Marhey-Bold.ttf", 15, 40));
     ui->scoreBoardButton->setFont(QFont("resources/fonts/Marhey-Bold.ttf", 15, 40));
-    ui->optionsButton->setFont(QFont("resources/fonts/Marhey-Bold.ttf", 15, 40));
+    ui->statsButton->setFont(QFont("resources/fonts/Marhey-Bold.ttf", 15, 40));
     ui->myNickLabel->setFont(QFont("resources/fonts/Marhey-Bold.ttf", 14, 40));
 
     this->isFishing = false;
@@ -149,13 +150,6 @@ void HomePageDialog::updatePlayerStats() {
 
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
-    qDebug() << "Acciuga: " << this->trackActivity.countAcciuga;
-    qDebug() << "Anguilla: " << this->trackActivity.countAnguilla;
-    qDebug() << "Calamaro: " << this->trackActivity.countCalamro;
-    qDebug() << "Totano: " << this->trackActivity.countTotano;
-    qDebug() << "Tonnetto: " << this->trackActivity.countTonnetto;
-    qDebug() << "Trota: " << this->trackActivity.countTrota;
-
     QJsonObject obj;
     obj["email"] = this->email;
     obj["cAcciuga"] = this->trackActivity.countAcciuga;
@@ -212,11 +206,10 @@ QString checkNumber(double n, TrackActivity* trackActivity) {
 }
 
 void fishFunc(HomePageDialog* this_) {
-    using namespace std::chrono_literals;
     HomePageDialog::trackActivity = {0, 0, 0, 0, 0, 0};
 
     while(this_->isFishing) {
-        std::this_thread::sleep_for(2s);
+        std::this_thread::sleep_for(UserStats::fishTime);
 
         if(this_->isFishing) {
             QString keyFish = checkNumber(QRandomGenerator::global()->bounded(0, 100), &HomePageDialog::trackActivity);
@@ -266,14 +259,12 @@ void HomePageDialog::on_scoreBoardButton_clicked() {
     scoreBoardDialog.exec();
 }
 
-
 void HomePageDialog::on_storeBtn_clicked() {
     if(this->isFishing) {
         QMessageBox::information(0, "Info Application", "You have to stop your fishing session");
         return;
     }
 }
-
 
 void HomePageDialog::on_storeBtn_2_clicked() {
     if(this->isFishing) {
@@ -282,3 +273,10 @@ void HomePageDialog::on_storeBtn_2_clicked() {
     }
 }
 
+void HomePageDialog::on_statsButton_clicked() {
+    StatsDialog statsDialog;
+
+    statsDialog.setModal(true);
+    statsDialog.show();
+    statsDialog.exec();
+}

@@ -60,7 +60,7 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="optionsButton">
+  <widget class="QPushButton" name="statsButton">
    <property name="geometry">
     <rect>
      <x>380</x>
@@ -85,7 +85,7 @@ QPushButton:hover {
 }</string>
    </property>
    <property name="text">
-    <string>Opzioni</string>
+    <string>Statistiche</string>
    </property>
   </widget>
   <widget class="QPlainTextEdit" name="historyTextEdit">

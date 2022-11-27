@@ -58,6 +58,8 @@ private slots:
 
     void on_storeBtn_2_clicked();
 
+    void on_statsButton_clicked();
+
 private:
     Ui::HomePageDialog *ui;
 

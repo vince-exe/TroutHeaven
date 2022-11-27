@@ -4,9 +4,11 @@
 #include <QString>
 #include <QMap>
 
-#include <string>
+#include <chrono>
 
 #include "fish.h"
+
+using namespace std::chrono_literals;
 
 class ApplicationUtilities {
 public:
@@ -28,6 +30,10 @@ public:
     ApplicationUtilities();
 
 };
+
+namespace UserStats {
+    static std::chrono::duration<uint64_t, std::ratio<1, 1>> fishTime = 5s;
+}
 
 namespace LoginErrors {
     static const QString Unauthorized = "Unauthorized";
