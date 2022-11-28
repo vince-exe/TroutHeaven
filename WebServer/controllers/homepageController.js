@@ -71,3 +71,21 @@ exports.updtPlayerStats = async (req, resp) => {
 
     resp.sendStatus(200)
 }
+
+exports.getPlayer = async (req, resp) => {
+    if(!req.body.email) {
+        return resp.sendStatus(422);
+    }
+
+    let user = await userSchema.findOne({email: req.body.email})
+    if(!user) {
+        return resp.sendStatus(404)
+    }
+
+    const final = {
+        nickname: user.nickname,
+        score: user.score,
+        money: user.money
+    }
+    resp.status(200).json({user: final})
+}
