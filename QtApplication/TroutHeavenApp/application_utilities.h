@@ -6,8 +6,6 @@
 
 #include <chrono>
 
-#include "fish.h"
-
 using namespace std::chrono_literals;
 
 class ApplicationUtilities {
@@ -24,7 +22,9 @@ public:
 
     static const QString updtPlayerStatsAPIUrl;
 
-    static QMap<QString, Fish> fishMap;
+    static const QString getPlayerStats;
+
+    static QMap<QString, int> statsMap;
 
 public:
     ApplicationUtilities();
@@ -39,6 +39,8 @@ namespace LoginErrors {
     static const QString Unauthorized = "Unauthorized";
 
     static const QString UnprocessableEntity = "Unprocessable Entity";
+
+    static const QString NotFound = "Not Found";
 }
 
 #endif // APPLICATIONUTILITIES_H

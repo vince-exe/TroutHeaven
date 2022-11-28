@@ -11,7 +11,6 @@ CONFIG += c++17
 
 SOURCES += \
     application_utilities.cpp \
-    fish.cpp \
     home_page_dialog.cpp \
     main.cpp \
     login_window.cpp \
@@ -20,7 +19,6 @@ SOURCES += \
 
 HEADERS += \
     application_utilities.h \
-    fish.h \
     home_page_dialog.h \
     login_window.h \
     score_board_dialog.h \

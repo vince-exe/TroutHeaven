@@ -95,7 +95,7 @@ void HomePageDialog::getFishFromServerFinished(QNetworkReply *rep) {
     /* save each fish in the fish map ( key = fish name ) */
     for(auto i : arr) {
         QJsonObject j = i.toObject();
-        ApplicationUtilities::fishMap.insert(j["name"].toString(), Fish(j["name"].toString(), j["value"].toDouble(), j["score"].toDouble()));
+        ApplicationUtilities::statsMap.insert(j["name"].toString(), 0);
     }
     this->canFish = true;
 }
@@ -178,14 +178,17 @@ QString checkNumber(double n, TrackActivity* trackActivity) {
 
         if(j == 0 || j == 1) {
             trackActivity->countAcciuga++;
+            ApplicationUtilities::statsMap["acciuga"] += 1;
             return "acciuga";
         }
         else if(j == 2) {
             trackActivity->countAnguilla++;
+            ApplicationUtilities::statsMap["anguilla"] += 1;
             return "anguilla";
         }
         else {
             trackActivity->countCalamro++;
+            ApplicationUtilities::statsMap["calamaro"] += 1;
             return  "calamaro";
         }
     }
@@ -194,14 +197,17 @@ QString checkNumber(double n, TrackActivity* trackActivity) {
 
         if(j == 0 || j == 1) {
             trackActivity->countTotano++;
+            ApplicationUtilities::statsMap["totano"] += 1;
             return "totano";
         }
         else {
             trackActivity->countTonnetto++;
+            ApplicationUtilities::statsMap["tonnetto"] += 1;
             return "tonnetto";
         }
     }
     trackActivity->countTrota++;
+    ApplicationUtilities::statsMap["trota"] += 1;
     return "trota";
 }
 

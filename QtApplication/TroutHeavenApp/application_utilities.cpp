@@ -12,6 +12,8 @@ const QString ApplicationUtilities::getFishApiUrl = "http://localhost:3000/homep
 
 const QString ApplicationUtilities::updtPlayerStatsAPIUrl = "http://localhost:3000/homepage/api/v1/updt-player-stats";
 
-QMap<QString, Fish> ApplicationUtilities::fishMap;
+const QString ApplicationUtilities::getPlayerStats = "http://localhost:3000/homepage/api/v1/get-player";
+
+QMap<QString, int> ApplicationUtilities::statsMap;
 
 ApplicationUtilities::ApplicationUtilities() {};
