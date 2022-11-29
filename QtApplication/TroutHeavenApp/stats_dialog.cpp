@@ -61,7 +61,7 @@ void StatsDialog::getPlayerStatsFinished(QNetworkReply *rep) {
     if(!(rep->error() == QNetworkReply::NoError)) {
         QString repStr = (QString) rep->readAll();
 
-        if(repStr == LoginErrors::UnprocessableEntity || repStr == LoginErrors::Unauthorized) {
+        if(repStr == ApiErrors::UnprocessableEntity || repStr == ApiErrors::Unauthorized) {
             QMessageBox::critical(0, "Fatal Error", "The application failed to comunicate with the server");
             return;
         }

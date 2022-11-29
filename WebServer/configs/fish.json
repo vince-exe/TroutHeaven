@@ -3,31 +3,37 @@
         {
             "name": "acciuga",
             "value": 5,
+            "valueSell": 7,
             "score": 10
         },
         {
             "name": "anguilla",
             "value": 10,
+            "valueSell": 14,
             "score": 20
         },
         {
             "name": "calamaro",
             "value": 15,
+            "valueSell": 19,
             "score": 30
         },
         {
             "name": "totano",
             "value": 20,
+            "valueSell": 25,
             "score": 40
         },
         {
             "name": "tonnetto",
             "value": 25,
+            "valueSell": 28,
             "score": 50
         },
         {
             "name": "trota",
             "value": 50,
+            "valueSell": 65,
             "score": 60
         }
     ]

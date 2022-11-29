@@ -15,4 +15,8 @@ router.route('/api/v1/updt-player-stats').post(homepageController.updtPlayerStat
 
 router.route('/api/v1/get-player').post(homepageController.getPlayer)
 
+router.route('/api/v1/updt-player-score').post(homepageController.updatePlayerScore)
+
+router.route('/api/v1/updt-player-money').post(homepageController.updatePlayerMoney)
+
 module.exports = router

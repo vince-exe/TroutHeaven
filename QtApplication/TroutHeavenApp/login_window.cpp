@@ -49,11 +49,11 @@ void LoginWindow::loginFinished(QNetworkReply *rep) {
     /* check the error */
     if(!(rep->error() == QNetworkReply::NoError)) {
         QString strRep = (QString) rep->readAll();
-        if(strRep == LoginErrors::Unauthorized) {
+        if(strRep == ApiErrors::Unauthorized) {
             QMessageBox::warning(0, "Warning", "Email or password wrong.");
             return;
         }
-        if(strRep == LoginErrors::UnprocessableEntity) {
+        if(strRep == ApiErrors::UnprocessableEntity) {
             QMessageBox::warning(0, "Warning", "Invalid email or password");
             return;
         }
@@ -91,7 +91,5 @@ void LoginWindow::on_loginButton_clicked() {
     obj["password"] = ui->passwordBox->text();
 
     QJsonDocument doc(obj);
-    QByteArray data = doc.toJson();
-
-    manager->post(request, data);
+    manager->post(request, doc.toJson());
 }

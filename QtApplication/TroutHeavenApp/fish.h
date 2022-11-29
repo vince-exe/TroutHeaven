@@ -5,22 +5,16 @@
 
 class Fish {
 private:
-    QString name;
-
     double value;
 
-    double score;
-
 public:
-    Fish(const QString name, double value, double score);
-
     Fish();
 
-    QString getName();
+    Fish(double n);
+
+    void setValue(double n);
 
     double getValue();
-
-    double getScore();
 
 };
 

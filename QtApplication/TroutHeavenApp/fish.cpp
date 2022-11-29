@@ -1,21 +1,15 @@
 #include "fish.h"
 
-Fish::Fish(const QString name, double value, double score) {
-    this->name = name;
-    this->value = value;
-    this->score = score;
-}
-
 Fish::Fish() {}
 
-QString Fish::getName() {
-    return this->name;
+Fish::Fish(double n) {
+    this->value = n;
+}
+
+void Fish::setValue(double n) {
+    this->value = n;
 }
 
 double Fish::getValue() {
     return this->value;
-}
-
-double Fish::getScore() {
-    return this->score;
 };

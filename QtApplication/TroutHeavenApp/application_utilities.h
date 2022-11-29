@@ -3,7 +3,6 @@
 
 #include <QString>
 #include <QMap>
-
 #include <chrono>
 
 using namespace std::chrono_literals;
@@ -24,7 +23,13 @@ public:
 
     static const QString getPlayerStats;
 
+    static const QString updtPlayerScore;
+
+    static const QString updtPlayerMoney;
+
     static QMap<QString, int> statsMap;
+
+    static QMap<QString, int> storeMap;
 
 public:
     ApplicationUtilities();
@@ -35,12 +40,14 @@ namespace UserStats {
     static std::chrono::duration<uint64_t, std::ratio<1, 1>> fishTime = 5s;
 }
 
-namespace LoginErrors {
+namespace ApiErrors {
     static const QString Unauthorized = "Unauthorized";
 
     static const QString UnprocessableEntity = "Unprocessable Entity";
 
     static const QString NotFound = "Not Found";
+
+    static const QString InsufficientCredit = "Failed Dependency";
 }
 
 #endif // APPLICATIONUTILITIES_H
