@@ -31,6 +31,7 @@ TrackActivity HomePageDialog::trackActivity;
 /* forms */
 #include "score_board_dialog.h"
 #include "stats_dialog.h"
+#include "store_dialog.h"
 
 HomePageDialog::HomePageDialog(QWidget *parent) :
     QDialog(parent),
@@ -270,13 +271,11 @@ void HomePageDialog::on_storeBtn_clicked() {
         QMessageBox::information(0, "Info Application", "You have to stop your fishing session");
         return;
     }
-}
+    StoreDialog storeDialog;
 
-void HomePageDialog::on_storeBtn_2_clicked() {
-    if(this->isFishing) {
-        QMessageBox::information(0, "Info Application", "You have to stop your fishing session");
-        return;
-    }
+    storeDialog.setModal(true);
+    storeDialog.show();
+    storeDialog.exec();
 }
 
 void HomePageDialog::on_statsButton_clicked() {
@@ -286,3 +285,11 @@ void HomePageDialog::on_statsButton_clicked() {
     statsDialog.show();
     statsDialog.exec();
 }
+
+void HomePageDialog::on_inventaryBtn_clicked() {
+    if(this->isFishing) {
+        QMessageBox::information(0, "Info Application", "You have to stop your fishing session");
+        return;
+    }
+}
+

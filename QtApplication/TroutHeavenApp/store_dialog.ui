@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>StoreDialog</class>
+ <widget class="QDialog" name="StoreDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>577</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Trout Heaven</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+	background-color: #13475c;
+}</string>
+  </property>
+  <widget class="QLabel" name="titleLabel">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>20</y>
+     <width>331</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    color: #dbdbdbe5;
+    word-spacing: 10px;
+    letter-spacing: 1px;
+}</string>
+   </property>
+   <property name="text">
+    <string>Trout Heaven</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>55</x>
+     <y>70</y>
+     <width>300</width>
+     <height>5</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+	background-color: rgb(9, 43, 56);
+	border-radius: 20px
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>110</y>
+     <width>111</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    border: 4px solid #092b38;
+    background-color: #13475c;
+    color: #dbdbdbe5;
+    font-size: 15px;
+    outline: none;
+    letter-spacing: 1.3px;
+    border-radius: 10px;
+}</string>
+   </property>
+   <property name="text">
+    <string>Velocità</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="velocitySpin">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>180</y>
+     <width>61</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QSpinBox {
+    border: 3px solid #092b38;
+    background-color: #13475c;
+    color: #dbdbdbe5;
+    font-size: 15px;
+    outline: none;
+}</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>110</y>
+     <width>111</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    border: 4px solid #092b38;
+    background-color: #13475c;
+    color: #dbdbdbe5;
+    font-size: 15px;
+    outline: none;
+    letter-spacing: 1.3px;
+    border-radius: 10px;
+}</string>
+   </property>
+   <property name="text">
+    <string>Acciuga</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>240</y>
+     <width>111</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    border: 4px solid #092b38;
+    background-color: #13475c;
+    color: #dbdbdbe5;
+    font-size: 15px;
+    outline: none;
+    letter-spacing: 1.3px;
+    border-radius: 10px;
+}</string>
+   </property>
+   <property name="text">
+    <string>Anguilla</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>240</y>
+     <width>111</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    border: 4px solid #092b38;
+    background-color: #13475c;
+    color: #dbdbdbe5;
+    font-size: 15px;
+    outline: none;
+    letter-spacing: 1.3px;
+    border-radius: 10px;
+}</string>
+   </property>
+   <property name="text">
+    <string>Calamaro</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>370</y>
+     <width>111</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    border: 4px solid #092b38;
+    background-color: #13475c;
+    color: #dbdbdbe5;
+    font-size: 15px;
+    outline: none;
+    letter-spacing: 1.3px;
+    border-radius: 10px;
+}</string>
+   </property>
+   <property name="text">
+    <string>Totano</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>370</y>
+     <width>111</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+    border: 4px solid #092b38;
+    background-color: #13475c;
+    color: #dbdbdbe5;
+    font-size: 15px;
+    outline: none;
+    letter-spacing: 1.3px;
+    border-radius: 10px;
+}</string>
+   </property>
+   <property name="text">
+    <string>Trota</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="acciugaSpin">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>180</y>
+     <width>61</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QSpinBox {
+    border: 3px solid #092b38;
+    background-color: #13475c;
+    color: #dbdbdbe5;
+    font-size: 15px;
+    outline: none;
+}</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="anguillaSpin">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>310</y>
+     <width>61</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QSpinBox {
+    border: 3px solid #092b38;
+    background-color: #13475c;
+    color: #dbdbdbe5;
+    font-size: 15px;
+    outline: none;
+}</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="calamaroSpin">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>310</y>
+     <width>61</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QSpinBox {
+    border: 3px solid #092b38;
+    background-color: #13475c;
+    color: #dbdbdbe5;
+    font-size: 15px;
+    outline: none;
+}</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="totanoSpin">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>440</y>
+     <width>61</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QSpinBox {
+    border: 3px solid #092b38;
+    background-color: #13475c;
+    color: #dbdbdbe5;
+    font-size: 15px;
+    outline: none;
+}</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="trotaSpin">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>440</y>
+     <width>61</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QSpinBox {
+    border: 3px solid #092b38;
+    background-color: #13475c;
+    color: #dbdbdbe5;
+    font-size: 15px;
+    outline: none;
+}</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="doneBtn">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>510</y>
+     <width>111</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    border: 4px solid #092b38;
+    background-color: #13475c;
+    color: #dbdbdbe5;
+    font-size: 15px;
+    outline: none;
+    letter-spacing: 1.3px;
+}
+
+QPushButton:hover {
+	border: 5px solid #092b38;
+}</string>
+   </property>
+   <property name="text">
+    <string>Fatto</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

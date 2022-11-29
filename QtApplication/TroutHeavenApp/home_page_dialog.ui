@@ -273,7 +273,7 @@ QPushButton:hover {
     <string>Negozio</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="storeBtn_2">
+  <widget class="QPushButton" name="inventaryBtn">
    <property name="geometry">
     <rect>
      <x>380</x>
