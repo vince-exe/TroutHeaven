@@ -11,18 +11,12 @@ html {
 }
 
 .second-div {
-    width: 45%;
+    width: 10%;
 }
 
 .main-nav-bar.active {
     flex-direction: column;
     height: 475px;
-}
-
-@media (max-width: 1206px) {
-    .second-div {
-        width: 55%;
-    }
 }
 
 #table {
