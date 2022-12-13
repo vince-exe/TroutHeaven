@@ -1,4 +1,4 @@
-# <p align="center"> 🐟 Trout Heaven 🐟p>
+# <p align="center"> 🐟 Trout Heaven 🐟
 ### <p align="center"> 🐠 An application that simulate a fish bot. With it's own website!! 🐠</p><br>
 
 ## <p align="center">🔨 Requirements To Build [ Application ] 🔨</p>
