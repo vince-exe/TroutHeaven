@@ -178,7 +178,7 @@ QPushButton:hover {
    <property name="geometry">
     <rect>
      <x>380</x>
-     <y>210</y>
+     <y>240</y>
      <width>111</width>
      <height>51</height>
     </rect>
@@ -249,7 +249,7 @@ QPushButton:hover {
    <property name="geometry">
     <rect>
      <x>380</x>
-     <y>280</y>
+     <y>340</y>
      <width>111</width>
      <height>51</height>
     </rect>
@@ -271,34 +271,6 @@ QPushButton:hover {
    </property>
    <property name="text">
     <string>Negozio</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="inventaryBtn">
-   <property name="geometry">
-    <rect>
-     <x>380</x>
-     <y>350</y>
-     <width>111</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton {
-    border: 4px solid #092b38;
-    background-color: #13475c;
-    color: #dbdbdbe5;
-    font-size: 15px;
-    outline: none;
-    letter-spacing: 1.3px;
-    border-radius: 10px;
-}
-
-QPushButton:hover {
-	border: 5px solid #092b38;
-}</string>
-   </property>
-   <property name="text">
-    <string>Inventario</string>
    </property>
   </widget>
  </widget>
